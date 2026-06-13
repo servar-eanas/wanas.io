@@ -2,9 +2,16 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تواصل مع إدارة سيرفر ونس">
   <title>سيرفر ونس | التواصل</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body class="night-mode">
 
@@ -46,50 +53,44 @@
   </ul>
 </section>
 
-<!-- Toast للإشعارات -->
+<!-- قسم إرسال رسالة تواصل -->
+<section class="glass-card" style="margin-top: 30px;">
+  <h2><i class="fa-solid fa-paper-plane"></i> أرسل لنا رسالة مباشرة</h2>
+  <p class="section-desc">يمكنك تعبئة هذا النموذج للتواصل مع إدارة سيرفر ونس، وسيتم الرد عليك في أقرب وقت.</p>
+
+  <form id="contactForm">
+    <div class="form-group">
+      <label for="contactName"><i class="fa-solid fa-user"></i> الاسم</label>
+      <input type="text" id="contactName" name="name" placeholder="أدخل اسمك الكريم..." required>
+    </div>
+
+    <div class="form-group">
+      <label for="contactEmail"><i class="fa-solid fa-envelope"></i> البريد الإلكتروني</label>
+      <input type="email" id="contactEmail" name="email" placeholder="name@example.com" required style="direction: ltr; text-align: left;">
+    </div>
+
+    <div class="form-group">
+      <label for="contactSubject"><i class="fa-solid fa-heading"></i> موضوع الرسالة</label>
+      <input type="text" id="contactSubject" name="subject" placeholder="مثال: استفسار حول رتبة، مشكلة دفع، طلب شراكة..." required>
+    </div>
+
+    <div class="form-group">
+      <label for="contactMessage"><i class="fa-solid fa-comment-dots"></i> نص الرسالة</label>
+      <textarea id="contactMessage" name="message" placeholder="اكتب تفاصيل رسالتك هنا..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn" id="contactSubmitBtn">
+      <i class="fa-solid fa-paper-plane"></i> إرسال الرسالة
+    </button>
+  </form>
+</section>
+
+<!-- Toast للإشعارات تفاعلي -->
 <div id="toast" class="toast"></div>
 
 <footer>
-  <p>© 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
+  <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
 </footer>
-
-<script>
-  // تبديل الوضع الليلي والنهاري
-  const toggleBtn = document.getElementById("modeToggle");
-  toggleBtn.addEventListener("click", () => {
-    const body = document.body;
-    if (body.classList.contains("night-mode")) {
-      body.classList.remove("night-mode");
-      body.classList.add("day-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
-    } else {
-      body.classList.remove("day-mode");
-      body.classList.add("night-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
-    }
-  });
-
-  // دالة إظهار Toast
-  function showToast(message, type = "success") {
-    const toast = document.getElementById("toast");
-    if (!toast) return;
-    toast.textContent = message;
-    toast.className = "toast " + type + " show";
-    setTimeout(() => { toast.classList.remove("show"); }, 3000);
-  }
-
-  // أزرار نسخ
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const user = btn.parentElement.querySelector(".discord-user").textContent.trim();
-      navigator.clipboard.writeText(user).then(() => {
-        showToast("📋 تم نسخ: " + user);
-      }).catch(() => {
-        showToast("❌ حدث خطأ أثناء النسخ", "error");
-      });
-    });
-  });
-</script>
 
 </body>
 </html>

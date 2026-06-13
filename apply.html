@@ -2,8 +2,16 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="نموذج التقديم للانضمام إلى سيرفر ونس">
   <title>سيرفر ونس | التقديم</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body class="night-mode">
 <header>
@@ -12,30 +20,47 @@
     <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
     <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
     <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
-    <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
+    <a href="apply.html" class="active"><i class="fa-solid fa-file-signature"></i> التقديم</a>
     <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
     <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
     <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
-    <a href="memes.html" class="active"><i class="fa-solid fa-laugh"></i> الميمز</a>
+    <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
   </nav>
   <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
-</header>>
+</header>
 
   <section class="glass-card">
-    <h2>📝 نموذج التقديم</h2>
-    <form>
-      <label>الاسم</label>
-      <input type="text" required>
-      <label>العمر</label>
-      <input type="number" required>
-      <label>سبب التقديم</label>
-      <textarea required></textarea>
-      <button type="submit" class="btn">إرسال الطلب</button>
+    <h2><i class="fa-solid fa-file-signature"></i> نموذج التقديم للانضمام</h2>
+    <p class="section-desc">يرجى ملء النموذج أدناه للانضمام إلى طاقم سيرفر ونس</p>
+    
+    <form id="applyForm">
+      <div class="form-group">
+        <label for="applyName"><i class="fa-solid fa-user"></i> الاسم الكامل</label>
+        <input type="text" id="applyName" name="name" placeholder="أدخل اسمك الكامل..." required>
+      </div>
+      
+      <div class="form-group">
+        <label for="applyAge"><i class="fa-solid fa-calendar-days"></i> العمر</label>
+        <input type="number" id="applyAge" name="age" min="12" max="99" placeholder="أدخل عمرك الحقيقي..." required>
+      </div>
+      
+      <div class="form-group">
+        <label for="applyReason"><i class="fa-solid fa-circle-question"></i> سبب التقديم وماذا يمكنك تقديمه للسيرفر؟</label>
+        <textarea id="applyReason" name="reason" placeholder="اكتب هنا بالتفصيل عن أسباب تقديمك وخبراتك السابقة وكيف يمكنك إفادة السيرفر..." required></textarea>
+      </div>
+      
+      <button type="submit" class="btn" id="applySubmitBtn">
+        <i class="fa-solid fa-paper-plane"></i> إرسال الطلب
+      </button>
     </form>
   </section>
 
+  <!-- Toast للإشعارات تفاعلي -->
+  <div id="toast" class="toast"></div>
+
   <footer>
-    <p>© 2026 سيرفر ونس</p>
+    <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
   </footer>
 </body>
 </html>
+

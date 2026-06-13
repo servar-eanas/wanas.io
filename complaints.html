@@ -2,9 +2,16 @@
 <html lang="ar">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="تقديم الشكاوى والاقتراحات لسيرفر ونس">
   <title>سيرفر ونس | الشكاوي</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="config.js" defer></script>
+  <script src="script.js" defer></script>
 </head>
 <body class="night-mode">
 
@@ -18,18 +25,46 @@
     <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
     <a href="complaints.html" class="active"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
     <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
+    <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
   </nav>
   <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
 </header>
 
-<!-- قسم الشكاوي -->
+<!-- قسم الشكاوي والاقتراحات -->
 <section class="glass-card">
-  <h2><i class="fa-solid fa-triangle-exclamation"></i> صفحة الشكاوي</h2>
-  <p>يمكنك إرسال شكواك أو ملاحظتك عبر النموذج الرسمي التالي:</p>
+  <h2><i class="fa-solid fa-triangle-exclamation"></i> صفحة الشكاوي والاقتراحات</h2>
+  <p class="section-desc">يمكنك تقديم شكوى، اقتراح، أو الإبلاغ عن مشكلة مباشرة إلى الإدارة عبر النموذج أدناه:</p>
 
-  <div class="complaints-link">
-    <a href="https://forms.gle/DbbX9e5qrX4xj8S47" target="_blank" class="btn">
-      <i class="fa-solid fa-file-lines"></i> فتح نموذج الشكاوي
+  <form id="complaintForm">
+    <div class="form-group">
+      <label for="complaintName"><i class="fa-solid fa-user"></i> الاسم الكامل / اللقب</label>
+      <input type="text" id="complaintName" name="name" placeholder="أدخل اسمك هنا (أو اكتب 'فاعل خير' للسرية)..." required>
+    </div>
+
+    <div class="form-group">
+      <label for="complaintType"><i class="fa-solid fa-list-check"></i> نوع الرسالة</label>
+      <select id="complaintType" name="type" required style="width: 100%; padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glass); background: rgba(12, 18, 34, 0.8); color: var(--text-primary); font-family: 'Almarai', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);">
+        <option value="شكوى ضد لاعب">شكوى ضد لاعب</option>
+        <option value="شكوى ضد إداري">شكوى ضد إداري</option>
+        <option value="اقتراح جديد">اقتراح جديد</option>
+        <option value="الإبلاغ عن ثغرة/مشكلة">الإبلاغ عن ثغرة/مشكلة</option>
+        <option value="أخرى">أخرى</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="complaintDetails"><i class="fa-solid fa-circle-info"></i> التفاصيل</label>
+      <textarea id="complaintDetails" name="details" placeholder="اشرح لنا بالتفصيل موضوع الشكوى أو الاقتراح..." required></textarea>
+    </div>
+
+    <button type="submit" class="btn" id="complaintSubmitBtn">
+      <i class="fa-solid fa-paper-plane"></i> إرسال الشكوى/الاقتراح
+    </button>
+  </form>
+
+  <div style="margin-top: 30px;" class="complaints-link">
+    <a href="https://forms.gle/DbbX9e5qrX4xj8S47" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border-glass); box-shadow: none;">
+      <i class="fa-solid fa-file-lines"></i> أو افتح نموذج Google Forms القديم
     </a>
   </div>
 </section>
@@ -39,60 +74,28 @@
   <h2><i class="fa-brands fa-discord"></i> حسابات المسؤولين على الديسكورد</h2>
   <ul class="discord-list">
     <li>
-      <span class="discord-user"><i class="fa-solid fa-user"></i> abufares17     حساب الديسكورد</span>
+      <span class="discord-user"><i class="fa-solid fa-user"></i> abufares17</span>
       <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
     </li>
     <li>
-      <span class="discord-user"><i class="fa-solid fa-user"></i> x2t_3     حساب الديسكورد</span>
+      <span class="discord-user"><i class="fa-solid fa-user"></i> x2t_3</span>
       <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
     </li>
   </ul>
 </section>
 
-<!-- Toast للإشعارات -->
+<!-- قسم الشكاوي المرسلة محلياً -->
+<section class="glass-card" style="margin-top: 30px;">
+  <h2><i class="fa-solid fa-history"></i> شكاواك السابقة (المحفوظة محلياً)</h2>
+  <ul id="complaintsList" class="complaints-list" style="list-style: none; padding: 0; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; text-align: right;"></ul>
+</section>
+
+<!-- Toast للإشعارات تفاعلي -->
 <div id="toast" class="toast"></div>
 
 <footer>
-  <p>© 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
+  <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
 </footer>
-
-<script>
-  // تبديل الوضع الليلي والنهاري
-  const toggleBtn = document.getElementById("modeToggle");
-  toggleBtn.addEventListener("click", () => {
-    const body = document.body;
-    if (body.classList.contains("night-mode")) {
-      body.classList.remove("night-mode");
-      body.classList.add("day-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
-    } else {
-      body.classList.remove("day-mode");
-      body.classList.add("night-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
-    }
-  });
-
-  // دالة إظهار Toast
-  function showToast(message, type = "success") {
-    const toast = document.getElementById("toast");
-    if (!toast) return;
-    toast.textContent = message;
-    toast.className = "toast " + type + " show";
-    setTimeout(() => { toast.classList.remove("show"); }, 3000);
-  }
-
-  // أزرار نسخ حسابات الديسكورد
-  document.querySelectorAll(".copy-btn").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const user = btn.parentElement.querySelector(".discord-user").textContent.trim();
-      navigator.clipboard.writeText(user).then(() => {
-        showToast("📋 تم نسخ الحساب: " + user);
-      }).catch(() => {
-        showToast("❌ حدث خطأ أثناء النسخ", "error");
-      });
-    });
-  });
-</script>
 
 </body>
 </html>

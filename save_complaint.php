@@ -1,10 +1,9 @@
 <?php
 // إعداد الاتصال بقاعدة البيانات
 $servername = "localhost";
-$username = "الاسم"; // غيّر حسب إعداداتك
-$password = "كلمة المرور";     // غيّر حسب إعداداتك
+$username = "root"; // غيّر حسب إعداداتك
+$password = "";     // غيّر حسب إعداداتك
 $dbname = "server_db";
-    <ul id="complaintsList"></ul>
 
 $conn = new mysqli($servername, $username, $password, $dbname);
 
@@ -14,16 +13,20 @@ if ($conn->connect_error) {
 }
 
 // استقبال البيانات من الفورم
-$name = $_POST['name'];
-$complaint = $_POST['complaint'];
+$name = isset($_POST['name']) ? mysqli_real_escape_string($conn, $_POST['name']) : '';
+$complaint = isset($_POST['complaint']) ? mysqli_real_escape_string($conn, $_POST['complaint']) : '';
 
-// إدخال البيانات في الجدول
-$sql = "INSERT INTO complaints (name, complaint) VALUES ('$name', '$complaint')";
+if (!empty($name) && !empty($complaint)) {
+  // إدخال البيانات في الجدول
+  $sql = "INSERT INTO complaints (name, complaint) VALUES ('$name', '$complaint')";
 
-if ($conn->query($sql) === TRUE) {
-  echo "تم حفظ الشكوى بنجاح!";
+  if ($conn->query($sql) === TRUE) {
+    echo "تم حفظ الشكوى بنجاح!";
+  } else {
+    echo "خطأ: " . $conn->error;
+  }
 } else {
-  echo "خطأ: " . $conn->error;
+  echo "يرجى ملء جميع الحقول المطلوبة.";
 }
 
 $conn->close();
