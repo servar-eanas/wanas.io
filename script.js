@@ -1,3 +1,45 @@
+// ===== 0. التعامل مع القائمة المنسدلة التفاعلية =====
+document.addEventListener("DOMContentLoaded", () => {
+  const navMenuBtn = document.getElementById("navMenuBtn");
+  const navDropdownMenu = document.getElementById("navDropdownMenu");
+
+  if (navMenuBtn && navDropdownMenu) {
+    // فتح/إغلاق القائمة عند النقر على الزر
+    navMenuBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
+      navDropdownMenu.classList.toggle("show");
+      navMenuBtn.classList.toggle("active-dropdown");
+    });
+
+    // إغلاق القائمة عند النقر على أي رابط
+    navDropdownMenu.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        navDropdownMenu.classList.remove("show");
+        navMenuBtn.classList.remove("active-dropdown");
+      });
+    });
+
+    // إغلاق القائمة عند النقر خارج المنطقة
+    document.addEventListener("click", (e) => {
+      if (!navMenuBtn.contains(e.target) && !navDropdownMenu.contains(e.target)) {
+        navDropdownMenu.classList.remove("show");
+        navMenuBtn.classList.remove("active-dropdown");
+      }
+    });
+
+    // تحديد الصفحة النشطة بناءً على URL الحالي
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    navDropdownMenu.querySelectorAll("a").forEach((link) => {
+      const href = link.getAttribute("href");
+      if (href === currentPage || (currentPage === "" && href === "index.html")) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
+  }
+});
+
 // ===== 1. تأثير النجوم عند تحريك الماوس (Star Trail Effect) =====
 document.addEventListener("mousemove", (e) => {
   const star = document.createElement("div");
@@ -421,4 +463,20 @@ document.querySelectorAll(".copy-btn").forEach((btn) => {
 window.addEventListener("DOMContentLoaded", () => {
   displayComplaints();
   loadDiscordWidget();
+
+  const serverContentBtn = document.getElementById("serverContentBtn");
+  const closeServerContentBtn = document.getElementById("closeServerContentBtn");
+  const serverContentPanel = document.getElementById("serverContentPanel");
+
+  if (serverContentBtn && serverContentPanel) {
+    serverContentBtn.addEventListener("click", () => {
+      serverContentPanel.classList.remove("hidden");
+    });
+  }
+
+  if (closeServerContentBtn && serverContentPanel) {
+    closeServerContentBtn.addEventListener("click", () => {
+      serverContentPanel.classList.add("hidden");
+    });
+  }
 });

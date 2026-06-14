@@ -1,96 +1,120 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="فيديوهات مضحكة وميمز من سيرفر ونس">
   <title>سيرفر ونس | الميمز</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
+
 <body class="night-mode">
 
-<header>
-  <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
-  <nav>
-    <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
-    <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
-    <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
-    <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
-    <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
-    <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
-    <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
-    <a href="memes.html" class="active"><i class="fa-solid fa-laugh"></i> الميمز</a>
-  </nav>
-  <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
-</header>
+  <header>
+    <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
+    <nav>
+      <div class="nav-dropdown-container">
+        <button class="nav-dropdown-btn" id="navMenuBtn">
+          <i class="fa-solid fa-list"></i> صفحات
+        </button>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+          <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
+          <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
+          <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
+          <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
+          <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
+          <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
+          <a href="memes.html" class="active"><i class="fa-solid fa-laugh"></i> الميمز</a>
+        </div>
+      </div>
+      <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
+    </nav>
+  </header>
 
-<!-- قسم الميمز -->
-<section class="glass-card">
-  <h2><i class="fa-solid fa-laugh-squint"></i> فيديوهات ومواقف مضحكة</h2>
-  <p>اضغط الزر لتبديل عرض الميمز:</p>
+  <!-- قسم الميمز -->
+  <section class="glass-card">
+    <h2><i class="fa-solid fa-laugh-squint"></i> فيديوهات ومواقف مضحكة</h2>
+    <p>اضغط الزر لتبديل عرض الميمز:</p>
 
-  <button id="memesToggle" class="btn"><i class="fa-solid fa-laugh"></i> عرض الميمز</button>
+    <button id="memesToggle" class="btn"><i class="fa-solid fa-laugh"></i> عرض الميمز</button>
 
-  <div id="memesContainer" class="memes-grid hidden">
-    <div class="meme-card">
-      <h3><i class="fa-solid fa-video"></i> لاعب وقع من الجسر 😂</h3>
-      <video controls>
-        <source src="videos/funny1.mp4" type="video/mp4">
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
+    <div id="memesContainer" class="memes-grid hidden">
+      <div class="meme-card">
+        <h3><i class="fa-solid fa-video"></i> لاعب وقع من الجسر 😂</h3>
+        <video controls>
+          <source src="videos/funny1.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+
+      <div class="meme-card">
+        <h3><i class="fa-solid fa-video"></i> مطاردة كوميدية 🚓</h3>
+        <video controls>
+          <source src="videos/funny2.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
+
+      <div class="meme-card">
+        <h3><i class="fa-solid fa-video"></i> لاعب نسي يربط الحزام 🤦‍♂️</h3>
+        <video controls>
+          <source src="videos/funny3.mp4" type="video/mp4">
+          متصفحك لا يدعم تشغيل الفيديو.
+        </video>
+      </div>
     </div>
+  </section>
 
-    <div class="meme-card">
-      <h3><i class="fa-solid fa-video"></i> مطاردة كوميدية 🚓</h3>
-      <video controls>
-        <source src="videos/funny2.mp4" type="video/mp4">
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
-    </div>
+  <div id="toast" class="toast"></div>
 
-    <div class="meme-card">
-      <h3><i class="fa-solid fa-video"></i> لاعب نسي يربط الحزام 🤦‍♂️</h3>
-      <video controls>
-        <source src="videos/funny3.mp4" type="video/mp4">
-        متصفحك لا يدعم تشغيل الفيديو.
-      </video>
-    </div>
-  </div>
-</section>
+  <footer>
+    <p>© 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
+  </footer>
 
-<footer>
-  <p>© 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
-</footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      // تبديل الوضع الليلي والنهاري
+      const toggleBtn = document.getElementById("modeToggle");
+      if (toggleBtn) {
+        toggleBtn.addEventListener("click", () => {
+          const body = document.body;
+          if (body.classList.contains("night-mode")) {
+            body.classList.remove("night-mode");
+            body.classList.add("day-mode");
+            toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+          } else {
+            body.classList.remove("day-mode");
+            body.classList.add("night-mode");
+            toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
+          }
+        });
+      }
 
-<script>
-  // تبديل الوضع الليلي والنهاري
-  const toggleBtn = document.getElementById("modeToggle");
-  toggleBtn.addEventListener("click", () => {
-    const body = document.body;
-    if (body.classList.contains("night-mode")) {
-      body.classList.remove("night-mode");
-      body.classList.add("day-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
-    } else {
-      body.classList.remove("day-mode");
-      body.classList.add("night-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
-    }
-  });
+      // زر تبديل الميمز
+      const memesToggle = document.getElementById("memesToggle");
+      const memesContainer = document.getElementById("memesContainer");
 
-  // زر تبديل الميمز
-  const memesToggle = document.getElementById("memesToggle");
-  const memesContainer = document.getElementById("memesContainer");
-
-  memesToggle.addEventListener("click", () => {
-    if (memesContainer.classList.contains("hidden")) {
-      memesContainer.classList.remove("hidden");
-      memesToggle.innerHTML = '<i class="fa-solid fa-eye-slash"></i> إخفاء الميمز';
-    } else {
-      memesContainer.classList.add("hidden");
-      memesToggle.innerHTML = '<i class="fa-solid fa-laugh"></i> عرض الميمز';
-    }
-  });
-</script>
+      if (memesToggle && memesContainer) {
+        memesToggle.addEventListener("click", () => {
+          if (memesContainer.classList.contains("hidden")) {
+            memesContainer.classList.remove("hidden");
+            memesToggle.innerHTML = '<i class="fa-solid fa-eye-slash"></i> إخفاء الميمز';
+          } else {
+            memesContainer.classList.add("hidden");
+            memesToggle.innerHTML = '<i class="fa-solid fa-laugh"></i> عرض الميمز';
+          }
+        });
+      }
+    });
+  </script>
 
 </body>
+
 </html>

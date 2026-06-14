@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,21 +13,30 @@
   <link rel="stylesheet" href="style.css">
   <script src="script.js" defer></script>
 </head>
+
 <body>
-<header>
-  <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
-  <nav>
-    <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
-    <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
-    <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
-    <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
-    <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
-    <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
-    <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
-    <a href="memes.html" class="active"><i class="fa-solid fa-laugh"></i> الميمز</a>
-  </nav>
-  <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
-</header>
+  <header>
+    <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
+    <nav>
+      <div class="nav-dropdown-container">
+        <button class="nav-dropdown-btn" id="navMenuBtn">
+          <i class="fa-solid fa-list"></i> صفحات
+        </button>
+        <div class="nav-dropdown-menu" id="navDropdownMenu">
+          <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+          <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
+          <a href="rules.html" class="active"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
+          <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
+          <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
+          <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
+          <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
+          <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
+        </div>
+      </div>
+      <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
+    </nav>
+  </header>
+  </header>
 
 
 
@@ -67,11 +77,14 @@
         </div>
       </div>
     </div>
-    
+
   </section>
+
+  <div id="toast" class="toast"></div>
 
   <footer>
     <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
   </footer>
 </body>
+
 </html>
