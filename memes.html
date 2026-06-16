@@ -1,117 +1,96 @@
 <!DOCTYPE html>
-
-<html lang="ar" dir="rtl">
-
+<html lang="ar">
 <head>
-
   <meta charset="UTF-8">
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <meta name="description" content="آخر أخبار وتحديثات سيرفر ونس">
-
-  <title>سيرفر ونس | الأخبار</title>
-
-
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap" rel="stylesheet">
-
-
-
+  <title>سيرفر ونس | الميمز</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
   <link rel="stylesheet" href="style.css">
-
-
-
-  <script src="config.js" defer></script>
-
-  <script src="script.js" defer></script>
-
 </head>
-
-
-
-<body>
+<body class="night-mode">
 
 <header>
-
   <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
-
-
-
   <nav>
-
     <a href="home.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
-
-    <a href="news.html" class="active"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
-
+    <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
     <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
-
     <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
-
     <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
-
     <a href="complaints.html"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
-
     <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
-
-    <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
-
+    <a href="memes.html" class="active"><i class="fa-solid fa-laugh"></i> الميمز</a>
   </nav>
-
-
-
-  <button id="modeToggle" class="btn">
-
-    <i class="fa-solid fa-moon"></i>
-
-    تبديل الوضع
-
-  </button>
-
+  <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
 </header>
 
-
-
-<section class="hero">
-
-  <div class="hero-badge">
-
-    <i class="fa-solid fa-newspaper"></i>
-
-    <span>آخر الأخبار</span>
-
-  </div>
-
-
-
-  <h2>أخبار وتحديثات سيرفر ونس</h2>
-
-  <p>تابع آخر الإعلانات والتحديثات الخاصة بالسيرفر.</p>
-
-</section>
-
-
-
+<!-- قسم الميمز -->
 <section class="glass-card">
+  <h2><i class="fa-solid fa-laugh-squint"></i> فيديوهات ومواقف مضحكة</h2>
+  <p>اضغط الزر لتبديل عرض الميمز:</p>
 
-  <h2>📢 خبر جديد</h2>
+  <button id="memesToggle" class="btn"><i class="fa-solid fa-laugh"></i> عرض الميمز</button>
 
-  <p>
+  <div id="memesContainer" class="memes-grid hidden">
+    <div class="meme-card">
+      <h3><i class="fa-solid fa-video"></i> لاعب وقع من الجسر 😂</h3>
+      <video controls>
+        <source src="videos/funny1.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
 
-    سيتم إضافة الأخبار والتحديثات الجديدة هنا قريبًا.
+    <div class="meme-card">
+      <h3><i class="fa-solid fa-video"></i> مطاردة كوميدية 🚓</h3>
+      <video controls>
+        <source src="videos/funny2.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
 
-  </p>
-
+    <div class="meme-card">
+      <h3><i class="fa-solid fa-video"></i> لاعب نسي يربط الحزام 🤦‍♂️</h3>
+      <video controls>
+        <source src="videos/funny3.mp4" type="video/mp4">
+        متصفحك لا يدعم تشغيل الفيديو.
+      </video>
+    </div>
+  </div>
 </section>
+
 <footer>
-  <p>© 2026 سيرفر ونس</p>
-</footer>   
-  <div id="toast" class="toast"></div>                                                                                                                                                                      
+  <p>© 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
+</footer>
+
+<script>
+  // تبديل الوضع الليلي والنهاري
+  const toggleBtn = document.getElementById("modeToggle");
+  toggleBtn.addEventListener("click", () => {
+    const body = document.body;
+    if (body.classList.contains("night-mode")) {
+      body.classList.remove("night-mode");
+      body.classList.add("day-mode");
+      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+    } else {
+      body.classList.remove("day-mode");
+      body.classList.add("night-mode");
+      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
+    }
+  });
+
+  // زر تبديل الميمز
+  const memesToggle = document.getElementById("memesToggle");
+  const memesContainer = document.getElementById("memesContainer");
+
+  memesToggle.addEventListener("click", () => {
+    if (memesContainer.classList.contains("hidden")) {
+      memesContainer.classList.remove("hidden");
+      memesToggle.innerHTML = '<i class="fa-solid fa-eye-slash"></i> إخفاء الميمز';
+    } else {
+      memesContainer.classList.add("hidden");
+      memesToggle.innerHTML = '<i class="fa-solid fa-laugh"></i> عرض الميمز';
+    }
+  });
+</script>
+
 </body>
 </html>
