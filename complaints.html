@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,104 +13,89 @@
   <script src="config.js" defer></script>
   <script src="script.js" defer></script>
 </head>
-
 <body class="night-mode">
 
-  <header>
-    <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
-    <nav>
-      <div class="nav-dropdown-container">
-        <button class="nav-dropdown-btn" id="navMenuBtn">
-          <i class="fa-solid fa-list"></i> صفحات
-        </button>
-        <div class="nav-dropdown-menu" id="navDropdownMenu">
-          <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
-          <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
-          <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
-          <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
-          <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
-          <a href="complaints.html" class="active"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
-          <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
-          <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
-        </div>
-      </div>
-      <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
-    </nav>
-  </header>
+<header>
+  <h1><i class="fa-solid fa-gamepad"></i> سيرفر ونس</h1>
+  <nav>
+    <a href="index.html"><i class="fa-solid fa-house"></i> الرئيسية</a>
+    <a href="news.html"><i class="fa-solid fa-newspaper"></i> الأخبار</a>
+    <a href="rules.html"><i class="fa-solid fa-shield-halved"></i> القوانين</a>
+    <a href="apply.html"><i class="fa-solid fa-file-signature"></i> التقديم</a>
+    <a href="contact.html"><i class="fa-solid fa-headset"></i> التواصل</a>
+    <a href="complaints.html" class="active"><i class="fa-solid fa-envelope-open-text"></i> الشكاوي</a>
+    <a href="links.html"><i class="fa-solid fa-link"></i> الروابط</a>
+    <a href="memes.html"><i class="fa-solid fa-laugh"></i> الميمز</a>
+  </nav>
+  <button id="modeToggle" class="btn"><i class="fa-solid fa-moon"></i> تبديل الوضع</button>
+</header>
 
-  <!-- قسم الشكاوي والاقتراحات -->
-  <section class="glass-card">
-    <h2><i class="fa-solid fa-triangle-exclamation"></i> صفحة الشكاوي والاقتراحات</h2>
-    <p class="section-desc">يمكنك تقديم شكوى، اقتراح، أو الإبلاغ عن مشكلة مباشرة إلى الإدارة عبر النموذج أدناه:</p>
+<!-- قسم الشكاوي والاقتراحات -->
+<section class="glass-card">
+  <h2><i class="fa-solid fa-triangle-exclamation"></i> صفحة الشكاوي والاقتراحات</h2>
+  <p class="section-desc">يمكنك تقديم شكوى، اقتراح، أو الإبلاغ عن مشكلة مباشرة إلى الإدارة عبر النموذج أدناه:</p>
 
-    <form id="complaintForm">
-      <div class="form-group">
-        <label for="complaintName"><i class="fa-solid fa-user"></i> الاسم الكامل / اللقب</label>
-        <input type="text" id="complaintName" name="name" placeholder="أدخل اسمك هنا (أو اكتب 'فاعل خير' للسرية)..."
-          required>
-      </div>
-
-      <div class="form-group">
-        <label for="complaintType"><i class="fa-solid fa-list-check"></i> نوع الرسالة</label>
-        <select id="complaintType" name="type" required
-          style="width: 100%; padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glass); background: rgba(12, 18, 34, 0.8); color: var(--text-primary); font-family: 'Almarai', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);">
-          <option value="شكوى ضد لاعب">شكوى ضد لاعب</option>
-          <option value="شكوى ضد إداري">شكوى ضد إداري</option>
-          <option value="اقتراح جديد">اقتراح جديد</option>
-          <option value="الإبلاغ عن ثغرة/مشكلة">الإبلاغ عن ثغرة/مشكلة</option>
-          <option value="أخرى">أخرى</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label for="complaintDetails"><i class="fa-solid fa-circle-info"></i> التفاصيل</label>
-        <textarea id="complaintDetails" name="details" placeholder="اشرح لنا بالتفصيل موضوع الشكوى أو الاقتراح..."
-          required></textarea>
-      </div>
-
-      <button type="submit" class="btn" id="complaintSubmitBtn">
-        <i class="fa-solid fa-paper-plane"></i> إرسال الشكوى/الاقتراح
-      </button>
-    </form>
-
-    <div style="margin-top: 30px;" class="complaints-link">
-      <a href="https://forms.gle/DbbX9e5qrX4xj8S47" target="_blank" class="btn"
-        style="background: transparent; border: 1px solid var(--border-glass); box-shadow: none;">
-        <i class="fa-solid fa-file-lines"></i> أو افتح نموذج Google Forms القديم
-      </a>
+  <form id="complaintForm">
+    <div class="form-group">
+      <label for="complaintName"><i class="fa-solid fa-user"></i> الاسم الكامل / اللقب</label>
+      <input type="text" id="complaintName" name="name" placeholder="أدخل اسمك هنا (أو اكتب 'فاعل خير' للسرية)..." required>
     </div>
-  </section>
 
-  <!-- حسابات المسؤولين على الديسكورد -->
-  <section class="discord-accounts glass-card">
-    <h2><i class="fa-brands fa-discord"></i> حسابات المسؤولين على الديسكورد</h2>
-    <ul class="discord-list">
-      <li>
-        <span class="discord-user"><i class="fa-solid fa-user"></i> abufares17</span>
-        <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
-      </li>
-      <li>
-        <span class="discord-user"><i class="fa-solid fa-user"></i> x2t_3</span>
-        <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
-      </li>
-    </ul>
-  </section>
+    <div class="form-group">
+      <label for="complaintType"><i class="fa-solid fa-list-check"></i> نوع الرسالة</label>
+      <select id="complaintType" name="type" required style="width: 100%; padding: 14px 18px; border-radius: var(--radius-md); border: 1px solid var(--border-glass); background: rgba(12, 18, 34, 0.8); color: var(--text-primary); font-family: 'Almarai', sans-serif; font-size: 0.95rem; outline: none; transition: var(--transition);">
+        <option value="شكوى ضد لاعب">شكوى ضد لاعب</option>
+        <option value="شكوى ضد إداري">شكوى ضد إداري</option>
+        <option value="اقتراح جديد">اقتراح جديد</option>
+        <option value="الإبلاغ عن ثغرة/مشكلة">الإبلاغ عن ثغرة/مشكلة</option>
+        <option value="أخرى">أخرى</option>
+      </select>
+    </div>
 
-  <!-- قسم الشكاوي المرسلة محلياً -->
-  <section class="glass-card" style="margin-top: 30px;">
-    <h2><i class="fa-solid fa-history"></i> شكاواك السابقة (المحفوظة محلياً)</h2>
-    <ul id="complaintsList" class="complaints-list"
-      style="list-style: none; padding: 0; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; text-align: right;">
-    </ul>
-  </section>
+    <div class="form-group">
+      <label for="complaintDetails"><i class="fa-solid fa-circle-info"></i> التفاصيل</label>
+      <textarea id="complaintDetails" name="details" placeholder="اشرح لنا بالتفصيل موضوع الشكوى أو الاقتراح..." required></textarea>
+    </div>
 
-  <!-- Toast للإشعارات تفاعلي -->
-  <div id="toast" class="toast"></div>
+    <button type="submit" class="btn" id="complaintSubmitBtn">
+      <i class="fa-solid fa-paper-plane"></i> إرسال الشكوى/الاقتراح
+    </button>
+  </form>
 
-  <footer>
-    <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
-  </footer>
+  <div style="margin-top: 30px;" class="complaints-link">
+    <a href="https://forms.gle/DbbX9e5qrX4xj8S47" target="_blank" class="btn" style="background: transparent; border: 1px solid var(--border-glass); box-shadow: none;">
+      <i class="fa-solid fa-file-lines"></i> أو افتح نموذج Google Forms القديم
+    </a>
+  </div>
+</section>
+
+<!-- حسابات المسؤولين على الديسكورد -->
+<section class="discord-accounts glass-card">
+  <h2><i class="fa-brands fa-discord"></i> حسابات المسؤولين على الديسكورد</h2>
+  <ul class="discord-list">
+    <li>
+      <span class="discord-user"><i class="fa-solid fa-user"></i> abufares17</span>
+      <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
+    </li>
+    <li>
+      <span class="discord-user"><i class="fa-solid fa-user"></i> x2t_3</span>
+      <button class="copy-btn"><i class="fa-solid fa-copy"></i> نسخ</button>
+    </li>
+  </ul>
+</section>
+
+<!-- قسم الشكاوي المرسلة محلياً -->
+<section class="glass-card" style="margin-top: 30px;">
+  <h2><i class="fa-solid fa-history"></i> شكاواك السابقة (المحفوظة محلياً)</h2>
+  <ul id="complaintsList" class="complaints-list" style="list-style: none; padding: 0; margin-top: 20px; display: flex; flex-direction: column; gap: 12px; text-align: right;"></ul>
+</section>
+
+<!-- Toast للإشعارات تفاعلي -->
+<div id="toast" class="toast"></div>
+
+<footer>
+  <p><i class="fa-regular fa-copyright"></i> 2026 سيرفر ونس — جميع الحقوق محفوظة</p>
+</footer>
 
 </body>
-
 </html>
