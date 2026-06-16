@@ -394,33 +394,56 @@ async function loadDiscordWidget() {
 }
 
 // ===== 9. زر تبديل الوضع الليلي/النهاري =====
+
 const toggleBtn = document.getElementById("modeToggle");
+
 if (toggleBtn) {
-  // استعادة خيار المستخدم المفضل من المتصفح
-  const savedMode = localStorage.getItem("preferredTheme");
-  if (savedMode === "day") {
+
+  const savedTheme = localStorage.getItem("preferredTheme");
+
+  if (savedTheme === "day") {
     document.body.classList.remove("night-mode");
     document.body.classList.add("day-mode");
-    toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+
+    toggleBtn.innerHTML =
+      '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+  } else {
+    document.body.classList.remove("day-mode");
+    document.body.classList.add("night-mode");
+
+    toggleBtn.innerHTML =
+      '<i class="fa-solid fa-moon"></i> الوضع الليلي';
   }
 
   toggleBtn.addEventListener("click", () => {
-    const body = document.body;
 
-    if (body.classList.contains("night-mode")) {
-      body.classList.remove("night-mode");
-      body.classList.add("day-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+    if (document.body.classList.contains("night-mode")) {
+
+      document.body.classList.remove("night-mode");
+      document.body.classList.add("day-mode");
+
       localStorage.setItem("preferredTheme", "day");
+
+      toggleBtn.innerHTML =
+        '<i class="fa-solid fa-sun"></i> الوضع النهاري';
+
       showToast("☀️ تم تفعيل الوضع النهاري");
+
     } else {
-      body.classList.remove("day-mode");
-      body.classList.add("night-mode");
-      toggleBtn.innerHTML = '<i class="fa-solid fa-moon"></i> الوضع الليلي';
+
+      document.body.classList.remove("day-mode");
+      document.body.classList.add("night-mode");
+
       localStorage.setItem("preferredTheme", "night");
+
+      toggleBtn.innerHTML =
+        '<i class="fa-solid fa-moon"></i> الوضع الليلي';
+
       showToast("🌙 تم تفعيل الوضع الليلي");
     }
+
   });
+
 }
 
 // ===== 10. أزرار نسخ حسابات الديسكورد العامة =====
