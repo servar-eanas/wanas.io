@@ -1,3 +1,21 @@
+// حماية الموقع وإجبار المستخدم على تسجيل الدخول
+
+const currentPage = window.location.pathname.split("/").pop();
+
+if (
+  !localStorage.getItem("user") &&
+  currentPage !== "login.html"
+) {
+  window.location.href = "login.html";
+}
+
+// منع الرجوع لصفحة تسجيل الدخول بعد تسجيل الدخول
+if (
+  localStorage.getItem("user") &&
+  currentPage === "login.html"
+) {
+  window.location.href = "index.html";
+}
 // ===== 1. تأثير النجوم عند تحريك الماوس (Star Trail Effect) =====
 document.addEventListener("mousemove", (e) => {
   const star = document.createElement("div");
