@@ -463,3 +463,27 @@ window.addEventListener("DOMContentLoaded", () => {
   displayComplaints();
   loadDiscordWidget();
 });
+document.addEventListener("DOMContentLoaded", () => {
+
+    const serverContentBtn =
+        document.getElementById("serverContentBtn");
+
+    const closeServerContentBtn =
+        document.getElementById("closeServerContentBtn");
+
+    const serverContentPanel =
+        document.getElementById("serverContentPanel");
+
+    if (serverContentBtn && serverContentPanel) {
+
+        serverContentBtn.addEventListener("click", () => {
+            serverContentPanel.classList.remove("hidden");
+        });
+
+        closeServerContentBtn.addEventListener("click", () => {
+            serverContentPanel.classList.add("hidden");
+        });
+
+    }
+
+});
